@@ -14,6 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        #if DEBUG
+        Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
+        
+        NotificationCenter.default.addObserver(forName: .init("INJECTION_BUNDLE_NOTIFICATION"), object: self, queue: .main) { _ in
+            print(#function, "Hello")
+        }
+
+        
+        #endif
+        
         return true
     }
 
@@ -34,3 +45,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+extension UIViewController {
+    
+    #if DEBUG
+    @objc func injected() {
+                for subview in view.subviews {
+                    subview.removeFromSuperview()
+                }
+                if let sublayers = self.view.layer.sublayers {
+                    for sublayer in sublayers {
+                        sublayer.removeFromSuperlayer()
+                    }
+                }
+
+                viewDidLoad()
+            }
+    
+    #endif
+    
+}

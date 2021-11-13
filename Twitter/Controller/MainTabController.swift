@@ -8,11 +8,28 @@
 import UIKit
 
 class MainTabController: UITabBarController {
+    
+    let actionButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .white
+        button.backgroundColor = .blue
+        button.setImage(#imageLiteral(resourceName: "new_tweet"), for: .normal)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configView()
+        
+        configUI()
+    }
+    
+    func configUI() -> Void {
+        view.addSubview(actionButton)
+        actionButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 64, paddingRight: 16, width: 56, height: 56)
+        
+        actionButton.layer.cornerRadius = 56 / 2
     }
     
     func configView() -> Void {
@@ -28,7 +45,7 @@ class MainTabController: UITabBarController {
         let nav3 = buildNavigationController(image: #imageLiteral(resourceName: "like_unselected"), rootView: notfications)
         
         let messages = MessagesController()
-        let nav4 = buildNavigationController(image: #imageLiteral(resourceName: "comment"), rootView: messages)
+        let nav4 = buildNavigationController(image: #imageLiteral(resourceName: "mail"), rootView: messages)
         
         viewControllers = [nav1, nav2, nav3, nav4]
         

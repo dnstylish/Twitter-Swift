@@ -40,6 +40,7 @@ class Helper {
         tf.textColor = .white
         tf.tintColor = .white
         tf.font = UIFont.systemFont(ofSize: 16)
+        tf.autocapitalizationType = .none
         tf.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         return tf
         

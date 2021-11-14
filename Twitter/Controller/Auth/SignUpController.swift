@@ -6,13 +6,14 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class SignUpController: UIViewController {
     
     // MARK: - Properties
     
     private let imagePicker = UIImagePickerController()
+    private var profileImage: UIImage?
     
     private let plusPhotoView: UIButton = {
        
@@ -56,21 +57,29 @@ class SignUpController: UIViewController {
     
     private lazy var fullNameContainerView: UIView = {
         
-        let tf = Helper().textFeild(withPlaceholder: "Email")
-        
-        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_person_outline_white_2x"), textField: tf)
+        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_person_outline_white_2x"), textField: fullNameTextField)
         
         return view
         
     }()
     
+    private lazy var fullNameTextField: UITextField = {
+       
+        return Helper().textFeild(withPlaceholder: "Full Name")
+        
+    }()
+    
     private lazy var usernameContainerView: UIView = {
-        
-        let tf = Helper().textFeild(withPlaceholder: "Email")
-        
-        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_person_outline_white_2x"), textField: tf)
+            
+        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_person_outline_white_2x"), textField: userNameTextField)
         
         return view
+        
+    }()
+    
+    private lazy var userNameTextField: UITextField = {
+        
+        return Helper().textFeild(withPlaceholder: "UserName")
         
     }()
     
@@ -117,8 +126,15 @@ class SignUpController: UIViewController {
     
     @objc func handleSignUp() -> Void  {
         
+        guard let profileImage = profileImage else {
+            print("❌ DEBUG: Please select a image")
+            return
+        }
+        
         guard let email = emailTextFeild.text else { return }
         guard let password = passwordTextField.text else { return }
+        guard let fullName = fullNameTextField.text else { return }
+        guard let userName = userNameTextField.text else { return }
         
         
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -131,6 +147,17 @@ class SignUpController: UIViewController {
             }
             
             print("❌ DEBUG: Thành công")
+            
+            guard let uid = result?.user.uid else { return }
+            
+            let values: [String: String] = ["email": email, "userName": userName, "fullName": fullName]
+            
+            Database.database().reference().child("users").child(uid).updateChildValues(values) { error, ref in
+                
+                print("❌ DEBUG: Update thông tin thành công")
+                
+            }
+            
             
         }
         
@@ -179,7 +206,9 @@ extension SignUpController: UIImagePickerControllerDelegate, UINavigationControl
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        guard let imageProfile = info[.editedImage] as? UIImage else { return }
+        guard let profileImage = info[.editedImage] as? UIImage else { return }
+        
+        self.profileImage = profileImage
         
         plusPhotoView.layer.cornerRadius = 120 / 2
         plusPhotoView.layer.masksToBounds = true
@@ -188,7 +217,7 @@ extension SignUpController: UIImagePickerControllerDelegate, UINavigationControl
         plusPhotoView.layer.borderColor = UIColor.white.cgColor
         plusPhotoView.layer.borderWidth = 1
         
-        self.plusPhotoView.setImage(imageProfile.withRenderingMode(.alwaysOriginal), for: .normal)
+        self.plusPhotoView.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
         
         
         dismiss(animated: true, completion: nil)

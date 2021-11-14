@@ -45,4 +45,18 @@ class Helper {
         
     }
     
+    func textButton(_ firstPart: String, _ secondPart: String) -> UIButton {
+        
+        let bt = UIButton(type: .system)
+        
+        let attrTitle = NSMutableAttributedString(string: firstPart, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        attrTitle.append(NSAttributedString(string: secondPart, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        
+        bt.setAttributedTitle(attrTitle, for: .normal)
+        
+        return bt
+        
+    }
+    
 }

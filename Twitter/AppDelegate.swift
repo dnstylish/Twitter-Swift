@@ -16,11 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         #if DEBUG
-        Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
+        // Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
         
-        NotificationCenter.default.addObserver(forName: .init("INJECTION_BUNDLE_NOTIFICATION"), object: self, queue: .main) { _ in
-            print(#function, "Hello")
-        }
+        // NotificationCenter.default.addObserver(forName: .init("INJECTION_BUNDLE_NOTIFICATION"), object: self, queue: .main) { _ in print(#function, "Hello")}
 
         
         #endif

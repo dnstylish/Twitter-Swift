@@ -18,6 +18,9 @@
 		1CE6C960273FADCA00B96627 /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C95F273FADCA00B96627 /* ExploreController.swift */; };
 		1CE6C962273FAE0500B96627 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C961273FAE0500B96627 /* NotificationsController.swift */; };
 		1CE6C964273FAE4400B96627 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C963273FAE4400B96627 /* MessagesController.swift */; };
+		1CE6C967273FBC4D00B96627 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C966273FBC4D00B96627 /* LoginController.swift */; };
+		1CE6C969273FBFE000B96627 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C968273FBFE000B96627 /* SignUpController.swift */; };
+		1CE6C96B273FC66E00B96627 /* Hepler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C96A273FC66E00B96627 /* Hepler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		1CE6C95F273FADCA00B96627 /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		1CE6C961273FAE0500B96627 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		1CE6C963273FAE4400B96627 /* MessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
+		1CE6C966273FBC4D00B96627 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1CE6C968273FBFE000B96627 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		1CE6C96A273FC66E00B96627 /* Hepler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hepler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 		1C4E2FED273EB4A100D1FA3C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1CE6C965273FBC3D00B96627 /* Auth */,
 				1CE6C95B273FAAA300B96627 /* MainTabController.swift */,
 				1CE6C95D273FAD9A00B96627 /* FeedController.swift */,
 				1CE6C95F273FADCA00B96627 /* ExploreController.swift */,
@@ -126,8 +133,18 @@
 			isa = PBXGroup;
 			children = (
 				1C4E2FF0273EB54A00D1FA3C /* Extensions.swift */,
+				1CE6C96A273FC66E00B96627 /* Hepler.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		1CE6C965273FBC3D00B96627 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				1CE6C966273FBC4D00B96627 /* LoginController.swift */,
+				1CE6C968273FBFE000B96627 /* SignUpController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +221,9 @@
 				1C4E2FD9273EB46B00D1FA3C /* SceneDelegate.swift in Sources */,
 				1CE6C95E273FAD9A00B96627 /* FeedController.swift in Sources */,
 				1CE6C95C273FAAA300B96627 /* MainTabController.swift in Sources */,
+				1CE6C967273FBC4D00B96627 /* LoginController.swift in Sources */,
+				1CE6C969273FBFE000B96627 /* SignUpController.swift in Sources */,
+				1CE6C96B273FC66E00B96627 /* Hepler.swift in Sources */,
 				1CE6C962273FAE0500B96627 /* NotificationsController.swift in Sources */,
 				1C4E2FF1273EB54A00D1FA3C /* Extensions.swift in Sources */,
 				1CE6C960273FADCA00B96627 /* ExploreController.swift in Sources */,

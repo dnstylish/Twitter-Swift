@@ -22,7 +22,9 @@ class LoginController: UIViewController {
     
     private lazy var emailContainerView: UIView = {
         
-        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_mail_outline_white_2x-1"), textField: emailTextFeild)
+        let tf = Helper().textFeild(withPlaceholder: "Email")
+        
+        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_mail_outline_white_2x-1"), textField: tf)
         
         return view
         
@@ -30,24 +32,12 @@ class LoginController: UIViewController {
     
     private lazy var passwordContainerView: UIView = {
         
-        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: passwordTextFeild)
-        
-        return view
-        
-    }()
-    
-    private lazy var emailTextFeild: UITextField = {
-        
-        let tf = Helper().textFeild(withPlaceholder: "Email")
-        return tf
-        
-    }()
-    
-    private lazy var passwordTextFeild: UITextField = {
-        
         let tf = Helper().textFeild(withPlaceholder: "Password")
         tf.isSecureTextEntry = true
-        return tf
+        
+        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: tf)
+        
+        return view
         
     }()
     
@@ -90,6 +80,9 @@ class LoginController: UIViewController {
     }
     
     @objc func handleSignUp() -> Void {
+        
+        let controller = SignUpController()
+        navigationController?.pushViewController(controller, animated: true)
         
     }
     

@@ -30,6 +30,7 @@
 		1CE6C97A274118CE00B96627 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE6C979274118CE00B96627 /* FirebaseMessaging */; };
 		1CE6C97C274118CE00B96627 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE6C97B274118CE00B96627 /* FirebaseDynamicLinks */; };
 		1CE6C97E274136CB00B96627 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C97D274136CB00B96627 /* Constants.swift */; };
+		1CE6C98027413B1800B96627 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C97F27413B1800B96627 /* AuthServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		1CE6C96A273FC66E00B96627 /* Hepler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hepler.swift; sourceTree = "<group>"; };
 		1CE6C96C2741126600B96627 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1CE6C97D274136CB00B96627 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1CE6C97F27413B1800B96627 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +97,7 @@
 				1C4E2FEC273EB49A00D1FA3C /* ViewModel */,
 				1C4E2FED273EB4A100D1FA3C /* Controller */,
 				1C4E2FEF273EB4AE00D1FA3C /* Helper */,
-				1C4E2FEE273EB4AA00D1FA3C /* API */,
+				1C4E2FEE273EB4AA00D1FA3C /* Services */,
 				1C4E2FD6273EB46B00D1FA3C /* AppDelegate.swift */,
 				1C4E2FD8273EB46B00D1FA3C /* SceneDelegate.swift */,
 				1C4E2FDC273EB46B00D1FA3C /* Main.storyboard */,
@@ -141,11 +143,12 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		1C4E2FEE273EB4AA00D1FA3C /* API */ = {
+		1C4E2FEE273EB4AA00D1FA3C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1CE6C97F27413B1800B96627 /* AuthServices.swift */,
 			);
-			path = API;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		1C4E2FEF273EB4AE00D1FA3C /* Helper */ = {
@@ -257,6 +260,7 @@
 				1CE6C967273FBC4D00B96627 /* LoginController.swift in Sources */,
 				1CE6C969273FBFE000B96627 /* SignUpController.swift in Sources */,
 				1CE6C96B273FC66E00B96627 /* Hepler.swift in Sources */,
+				1CE6C98027413B1800B96627 /* AuthServices.swift in Sources */,
 				1CE6C962273FAE0500B96627 /* NotificationsController.swift in Sources */,
 				1C4E2FF1273EB54A00D1FA3C /* Extensions.swift in Sources */,
 				1CE6C960273FADCA00B96627 /* ExploreController.swift in Sources */,

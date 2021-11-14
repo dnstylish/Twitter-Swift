@@ -11,6 +11,8 @@ class SignUpController: UIViewController {
     
     // MARK: - Properties
     
+    private let imagePicker = UIImagePickerController()
+    
     private let plusPhotoView: UIButton = {
        
         let bt = UIButton(type: .system)
@@ -109,6 +111,10 @@ class SignUpController: UIViewController {
     
     @objc func handleAddPhoto() -> Void  {
         
+        present(imagePicker, animated: true) {
+            
+        }
+        
     }
     
     // MARK: - Helpers
@@ -118,9 +124,12 @@ class SignUpController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
         
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
         view.addSubview(plusPhotoView)
         plusPhotoView.centerX(inView: view, topAnchor: view.safeAreaLayoutGuide.topAnchor, paddingTop: 0)
-        plusPhotoView.setDimensions(width: 100, height: 100)
+        plusPhotoView.setDimensions(width: 120, height: 120)
         
         let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, fullNameContainerView, usernameContainerView, signUpButton])
         stack.axis = .vertical
@@ -129,6 +138,7 @@ class SignUpController: UIViewController {
         
         view.addSubview(stack)
         stack.anchor(top: plusPhotoView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingLeft: 32, paddingRight: 32)
+        plusPhotoView.setDimensions(width: 120, height: 120)
         
         view.addSubview(alreadyAccountButton)
         alreadyAccountButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 16, paddingBottom: 16, paddingRight: 16)
@@ -136,5 +146,27 @@ class SignUpController: UIViewController {
     }
 
 
+}
+
+extension SignUpController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let imageProfile = info[.editedImage] as? UIImage else { return }
+        
+        plusPhotoView.layer.cornerRadius = 120 / 2
+        plusPhotoView.layer.masksToBounds = true
+        plusPhotoView.imageView?.contentMode = .scaleAspectFill
+        plusPhotoView.imageView?.clipsToBounds = true
+        plusPhotoView.layer.borderColor = UIColor.white.cgColor
+        plusPhotoView.layer.borderWidth = 1
+        
+        self.plusPhotoView.setImage(imageProfile.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
 }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUpController: UIViewController {
     
@@ -23,11 +24,15 @@ class SignUpController: UIViewController {
         
     }()
     
+    private lazy var emailTextFeild: UITextField = {
+        
+        return Helper().textFeild(withPlaceholder: "Email")
+        
+    }()
+    
     private lazy var emailContainerView: UIView = {
         
-        let tf = Helper().textFeild(withPlaceholder: "Email")
-        
-        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_mail_outline_white_2x-1"), textField: tf)
+        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_mail_outline_white_2x-1"), textField: emailTextFeild)
         
         return view
         
@@ -35,12 +40,17 @@ class SignUpController: UIViewController {
     
     private lazy var passwordContainerView: UIView = {
         
-        let tf = Helper().textFeild(withPlaceholder: "Password")
-        tf.isSecureTextEntry = true
-        
-        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: tf)
+        let view = Helper().inputContainerView(withImage: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: passwordTextField)
         
         return view
+        
+    }()
+    
+    private lazy var passwordTextField: UITextField = {
+        
+        let tf = Helper().textFeild(withPlaceholder: "Password")
+        tf.isSecureTextEntry = true
+        return tf
         
     }()
     
@@ -106,6 +116,23 @@ class SignUpController: UIViewController {
     }
     
     @objc func handleSignUp() -> Void  {
+        
+        guard let email = emailTextFeild.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            
+            if let error = error {
+                
+                print("DEBUG: \(error.localizedDescription)")
+                return
+                
+            }
+            
+            print("❌ DEBUG: Thành công")
+            
+        }
         
     }
     

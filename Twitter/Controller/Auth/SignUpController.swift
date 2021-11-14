@@ -136,6 +136,10 @@ class SignUpController: UIViewController {
         guard let fullName = fullNameTextField.text else { return }
         guard let userName = userNameTextField.text else { return }
         
+        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+        let filename = NSUUID().uuidString
+        let storageRef = STORAGE_PROFILE_IMAGES.child(filename)
+        
         
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             
@@ -148,15 +152,25 @@ class SignUpController: UIViewController {
             
             print("❌ DEBUG: Thành công")
             
-            guard let uid = result?.user.uid else { return }
-            
-            let values: [String: String] = ["email": email, "userName": userName, "fullName": fullName]
-            
-            Database.database().reference().child("users").child(uid).updateChildValues(values) { error, ref in
+            storageRef.putData(imageData, metadata: nil) { meta, error in
                 
-                print("❌ DEBUG: Update thông tin thành công")
+                storageRef.downloadURL { url, error in
+                    
+                    guard let profileImageUrl = url?.absoluteString else { return }
+                    guard let uid = result?.user.uid else { return }
+                    
+                    let values: [String: String] = ["email": email, "userName": userName, "fullName": fullName, "profileImageUrl": profileImageUrl]
+                    
+                    REF_USERS.child(uid).updateChildValues(values) { error, ref in
+                        
+                        print("❌ DEBUG: Update thông tin thành công")
+                        
+                    }
+                    
+                }
                 
             }
+            
             
             
         }

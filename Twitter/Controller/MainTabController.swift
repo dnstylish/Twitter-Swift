@@ -40,6 +40,7 @@ class MainTabController: UITabBarController {
             
             DispatchQueue.main.async {
                 let nv = UINavigationController(rootViewController: LoginController())
+                nv.modalPresentationStyle = .fullScreen
                 self.present(nv, animated: true, completion: nil)
             }
             

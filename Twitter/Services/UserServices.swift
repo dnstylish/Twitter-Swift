@@ -19,7 +19,9 @@ struct UserServices {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { snaphot in
             
             guard let dictionary = snaphot.value as? [String: AnyObject] else { return }
-            print("❌ DEBUG: \(dictionary)")
+
+            
+            let user = User(uid: uid, dictionary: dictionary)
             
         }
         

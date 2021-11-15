@@ -32,6 +32,7 @@
 		1CE6C97E274136CB00B96627 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C97D274136CB00B96627 /* Constants.swift */; };
 		1CE6C98027413B1800B96627 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C97F27413B1800B96627 /* AuthServices.swift */; };
 		1CE6C98427420A3100B96627 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C98327420A3100B96627 /* UserServices.swift */; };
+		1CE6C98627421BEF00B96627 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C98527421BEF00B96627 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		1CE6C97D274136CB00B96627 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1CE6C97F27413B1800B96627 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		1CE6C98327420A3100B96627 /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
+		1CE6C98527421BEF00B96627 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		1C4E2FEA273EB48C00D1FA3C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1CE6C98527421BEF00B96627 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				1CE6C967273FBC4D00B96627 /* LoginController.swift in Sources */,
 				1CE6C969273FBFE000B96627 /* SignUpController.swift in Sources */,
 				1CE6C96B273FC66E00B96627 /* Hepler.swift in Sources */,
+				1CE6C98627421BEF00B96627 /* User.swift in Sources */,
 				1CE6C98027413B1800B96627 /* AuthServices.swift in Sources */,
 				1CE6C962273FAE0500B96627 /* NotificationsController.swift in Sources */,
 				1C4E2FF1273EB54A00D1FA3C /* Extensions.swift in Sources */,

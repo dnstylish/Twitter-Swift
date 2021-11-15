@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabController: UITabBarController {
+    
+    // MARK: - Properties
     
     let actionButton: UIButton = {
         let button = UIButton(type: .system)
@@ -20,18 +23,57 @@ class MainTabController: UITabBarController {
         return button
     }()
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configView()
         
-        configUI()
+        authUserAndConfig()
+        
+        // logOutUser()
     }
     
+    // MARK: - API
+    func authUserAndConfig() -> Void {
+        
+        if Auth.auth().currentUser == nil {
+            
+            DispatchQueue.main.async {
+                let nv = UINavigationController(rootViewController: LoginController())
+                self.present(nv, animated: true, completion: nil)
+            }
+            
+        } else {
+            
+            print("❌ DEBUG: User logged in")
+            configView()
+            
+            configUI()
+            
+        }
+        
+    }
+    
+    func logOutUser() -> Void {
+        
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            
+            print("❌ DEBUG: Lỗi log out")
+            print("❌ DEBUG: \(error)")
+            
+        }
+        
+    }
+    
+    // MARK: - Selections
     @objc func actionButtonTapped() {
         
     }
     
+    
+    // MARK: - Helpers
     func configUI() -> Void {
         view.addSubview(actionButton)
         actionButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 64, paddingRight: 16, width: 56, height: 56)

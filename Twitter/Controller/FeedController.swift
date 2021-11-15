@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FeedController: UIViewController {
     
@@ -17,6 +18,7 @@ class FeedController: UIViewController {
         didSet {
             
             print("❌ DEBUG: Setted user")
+            configLeftButton()
             
         }
         
@@ -27,17 +29,6 @@ class FeedController: UIViewController {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "twitter_logo_blue"))
         imageView.contentMode = .scaleAspectFit
         return imageView
-        
-    }()
-    
-    private lazy var avatarImage: UIImageView = {
-        
-        let iv = UIImageView()
-        iv.backgroundColor = .twitterBlue
-        iv.setDimensions(width: 32, height: 32)
-        iv.layer.cornerRadius = 32/2
-        
-        return iv
         
     }()
 
@@ -54,7 +45,21 @@ class FeedController: UIViewController {
     
         navigationItem.titleView = logoImage
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: avatarImage)
+    }
+    
+    func configLeftButton() -> Void {
+        
+        let iv = UIImageView()
+        iv.backgroundColor = .twitterBlue
+        iv.setDimensions(width: 32, height: 32)
+        iv.layer.cornerRadius = 32/2
+        
+        guard let avatar = URL(string: user!.profileImageUrl) else { return }
+        
+        iv.sd_setImage(with: avatar, completed: nil)
+        iv.clipsToBounds = true
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: iv)
         
     }
 

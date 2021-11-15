@@ -11,6 +11,17 @@ import Firebase
 class MainTabController: UITabBarController {
     
     // MARK: - Properties
+    var user: User? {
+        
+        didSet {
+            
+            guard let nav = viewControllers?[0] as? UINavigationController else { return }
+            guard let feed = nav.viewControllers.first as? FeedController else { return }
+            feed.user = user
+            
+        }
+        
+    }
     
     let actionButton: UIButton = {
         let button = UIButton(type: .system)
@@ -38,7 +49,11 @@ class MainTabController: UITabBarController {
     
     func fetchUser() -> Void {
         
-        UserServices.shared.fetchUser()
+        UserServices.shared.fetchUser { user in
+            
+            self.user = user
+            
+        }
         
     }
     func authUserAndConfig() -> Void {

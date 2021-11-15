@@ -13,7 +13,7 @@ struct UserServices {
     
     static let shared: UserServices = UserServices()
     
-    func fetchUser() -> Void {
+    func fetchUser(completion: @escaping(User) -> Void) -> Void {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         REF_USERS.child(uid).observeSingleEvent(of: .value) { snaphot in
@@ -22,6 +22,7 @@ struct UserServices {
 
             
             let user = User(uid: uid, dictionary: dictionary)
+            completion(user)
             
         }
         

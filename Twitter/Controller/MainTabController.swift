@@ -28,14 +28,21 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // logOutUser()
+        
         authUserAndConfig()
         
-        // logOutUser()
     }
     
     // MARK: - API
-    func authUserAndConfig() -> Void {
+    
+    func fetchUser() -> Void {
         
+        UserServices.shared.fetchUser()
+        
+    }
+    func authUserAndConfig() -> Void {
+                
         if Auth.auth().currentUser == nil {
             
             DispatchQueue.main.async {
@@ -50,6 +57,8 @@ class MainTabController: UITabBarController {
             configView()
             
             configUI()
+            
+            fetchUser()
             
         }
         

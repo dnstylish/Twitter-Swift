@@ -31,6 +31,7 @@
 		1CE6C97C274118CE00B96627 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE6C97B274118CE00B96627 /* FirebaseDynamicLinks */; };
 		1CE6C97E274136CB00B96627 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C97D274136CB00B96627 /* Constants.swift */; };
 		1CE6C98027413B1800B96627 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C97F27413B1800B96627 /* AuthServices.swift */; };
+		1CE6C98427420A3100B96627 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6C98327420A3100B96627 /* UserServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		1CE6C96C2741126600B96627 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1CE6C97D274136CB00B96627 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1CE6C97F27413B1800B96627 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
+		1CE6C98327420A3100B96627 /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				1CE6C97F27413B1800B96627 /* AuthServices.swift */,
+				1CE6C98327420A3100B96627 /* UserServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			files = (
 				1C4E2FD7273EB46B00D1FA3C /* AppDelegate.swift in Sources */,
 				1C4E2FD9273EB46B00D1FA3C /* SceneDelegate.swift in Sources */,
+				1CE6C98427420A3100B96627 /* UserServices.swift in Sources */,
 				1CE6C95E273FAD9A00B96627 /* FeedController.swift in Sources */,
 				1CE6C95C273FAAA300B96627 /* MainTabController.swift in Sources */,
 				1CE6C967273FBC4D00B96627 /* LoginController.swift in Sources */,
